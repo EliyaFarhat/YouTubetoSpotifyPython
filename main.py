@@ -48,9 +48,15 @@ def searchTitleGetURL(title):
         for y in range(len(check)):
             checkUri.append(check[y]['track']['uri'])
         for x in range(len(title)):
-            if ((title[x])[::-1])[:16] == ")oiduA laciffO(" or ((title[x])[::-1])[:16] == ")oediV laciffO(" :
-                title[x] = ((title[x])[::-1])[16::][::-1]
-            searchResults = sp.search(q=title[x], type="track", market="US", limit=1)
+            title[x] = title[x].replace("(Official Video)", "")
+            title[x] = title[x].replace("(Video)", "")
+            title[x] = title[x].replace("(Audio)", "")
+            title[x] = title[x].replace("(Official Music Video)", "")
+            title[x] = title[x].replace("(Official Audio)", "")
+            title[x] = title[x].replace("[Official Audio]", "")
+            title[x] = title[x].replace("[Official Music Video]", "")
+            title[x] = title[x].replace("[Official Visualizer]", "")
+            title[x] = title[x].replace("(Official Visualizer)", "")
 
             if searchResults['tracks']['items'][0]['uri'] not in checkUri:
                 uriLst.append(searchResults['tracks']['items'][0]['uri'])
