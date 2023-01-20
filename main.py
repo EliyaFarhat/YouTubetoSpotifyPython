@@ -50,10 +50,6 @@ def searchTitleGetURL(title):
         for x in range(len(title)):
             if ((title[x])[::-1])[:16] == ")oiduA laciffO(" or ((title[x])[::-1])[:16] == ")oediV laciffO(" :
                 title[x] = ((title[x])[::-1])[16::][::-1]
-            if title[x] == "bladee - egobaby (Official Video)":
-                title[x] = "bladee - egobaby"
-            if title[x] == "XXXTENTACION - Everybody Dies In Their Nightmares (Audio)":
-                title[x] = "XXXTENTACION - Everybody Dies In Their Nightmares"
             searchResults = sp.search(q=title[x], type="track", market="US", limit=1)
 
             if searchResults['tracks']['items'][0]['uri'] not in checkUri:
